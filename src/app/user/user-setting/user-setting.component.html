@@ -1,0 +1,29 @@
+<h2 class="margin">个人信息</h2>
+<mat-divider></mat-divider>
+
+<div class="nickname">
+  <label class="margin">昵称:</label>
+  <input class="margin" placeholder="昵称" [(ngModel)]="user.name">
+</div>
+<div class="nickname">
+  <label class="margin">邮箱:</label>
+  <input class="margin" disabled="disabled" placeholder="昵称" [(ngModel)]="user.email">
+</div>
+<div>
+  <label class="margin">签名:</label>
+  <!--<textarea class="margin" placeholder="设置您的签名- ( ゜- ゜)つロ"></textarea>-->
+  <textarea class="margin" placeholder="设置您的签名- ( ゜- ゜)つロ" [(ngModel)]="user.sign"
+            rows="3" autocomplete="off"></textarea>
+</div>
+
+<label class="margin">性别:</label>
+<mat-radio-group [(ngModel)]="user.sex">
+  <mat-radio-button class="margin" value="1">
+    男
+  </mat-radio-button>
+  <mat-radio-button class="margin" value="0">
+    女
+  </mat-radio-button>
+</mat-radio-group>
+<mat-divider></mat-divider>
+<button class="margin" mat-flat-button color="primary" (click)="update()">保存</button>

@@ -1,0 +1,19 @@
+<mat-grid-list cols="6" rowHeight="80px">
+  <mat-grid-tile
+    [colspan]="6"
+    [rowspan]="2"
+    [style.background]="'yellow'">
+  </mat-grid-tile>
+  <mat-grid-tile
+    [colspan]="1"
+    [rowspan]="3"
+    [style.background]="'blue'">
+    <app-user-sidebar></app-user-sidebar>
+  </mat-grid-tile>
+  <mat-grid-tile class="video-card"
+                 [colspan]="5"
+                 [rowspan]="8"
+                 [style.background]="'#f8f9ff'">
+    <router-outlet></router-outlet>
+  </mat-grid-tile>
+</mat-grid-list>

@@ -1,0 +1,16 @@
+<mat-grid-list cols="4" rowHeight="50px">
+  <mat-grid-tile
+    [colspan]="4"
+    [rowspan]="1"
+    [style.background]="">
+    <nav class="top-bar">
+      <button mat-button routerLink="./video">主站</button>
+      <button id="pig" mat-button routerLink=".">养猪</button>
+      <app-user-button></app-user-button>
+      <button mat-button routerLink="./user">个人中心</button>
+      <button mat-button routerLink=".">关注</button>
+      <button mat-button routerLink=".">收藏夹</button>
+      <button id="up" mat-raised-button color="accent" routerLink=".">投稿</button>
+    </nav>
+  </mat-grid-tile>
+</mat-grid-list>

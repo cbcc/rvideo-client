@@ -1,0 +1,13 @@
+<div class="user-button-container">
+  <div class="mask" (click)="toUserCenter()" (mouseenter)="openMenu()" (mouseleave)="closeMenuDelay()"></div>
+  <button mat-mini-fab color="primary" [matMenuTriggerFor]="menu" #matMenuTrigger="matMenuTrigger">
+    <ng-container *ngIf="!isLoginIn()">Login</ng-container>
+    <img class="face" *ngIf="isLoginIn()" [src]="faceUrl">
+  </button>
+  <mat-menu #menu="matMenu">
+    <div (mouseleave)="closeMenuDelay()" (mouseenter)="cancelCloseMenuDelay()">
+      <button class="menu-item" *ngIf="!isLoginIn()" mat-flat-button color="primary" routerLink="./pass/login">登录</button>
+      <button class="menu-item" *ngIf="isLoginIn()"  mat-flat-button color="warn" (click)="logout()">注销</button>
+    </div>
+  </mat-menu>
+</div>
