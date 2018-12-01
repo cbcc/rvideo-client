@@ -1,0 +1,30 @@
+span{
+  display: inline-block;
+  position: relative;
+  top: -5px;
+  height: 24px;
+  margin: 5px;
+}
+a{
+  text-align: right;
+}
+.menu{
+  min-width: 120px;
+  width: 160px;
+}
+.name{
+  margin: 0 5px;
+}
+.user-button{
+  height: 50px;
+  border-radius: 50%;
+}
+.face{
+  border: 0 solid #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.menu-button{
+  width: 100%;
+}

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from '../core/service/user.service';
 
 @Component({
   selector: 'app-top-bar',
@@ -7,11 +6,8 @@ import {UserService} from '../core/service/user.service';
   styleUrls: ['./top-bar.component.css']
 })
 export class TopBarComponent implements OnInit {
-  constructor(private userService: UserService) { }
+  constructor() {}
 
   ngOnInit() {
-  }
-  isLoginIn(): boolean {
-    return this.userService.isLoginIn();
   }
 }

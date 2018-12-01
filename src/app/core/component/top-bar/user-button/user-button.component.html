@@ -1,0 +1,16 @@
+<div class="user-button-container">
+  <button class="user-button" mat-button #matMenuTrigger="matMenuTrigger" [matMenuTriggerFor]="menu">
+    <img class="face" [src]="user.face">
+  </button>
+</div>
+<mat-menu #menu="matMenu">
+  <div class="menu">
+    <div class="name" *ngIf="userService.isLoginIn()">
+      <mat-icon svgIcon="person"></mat-icon>
+      <span>{{user.name}}</span>
+      <mat-divider></mat-divider>
+    </div>
+    <button class="menu-button" *ngIf="!userService.isLoginIn()" mat-button color="primary" routerLink="./passport/login">登录</button>
+    <button class="menu-button" *ngIf="userService.isLoginIn()"  mat-button color="warn" (click)="logout()">注销</button>
+  </div>
+</mat-menu>

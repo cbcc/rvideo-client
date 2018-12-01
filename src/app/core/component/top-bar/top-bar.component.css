@@ -1,0 +1,19 @@
+mat-toolbar {
+  max-height: 50px;
+  padding: 0 88px;
+}
+
+button {
+  padding: 7px 16px;
+}
+
+.upload-button {
+  padding: 16px;
+  z-index: 10;
+}
+
+.fill-remaining-space {
+  /* This fills the remaining space, by using flexbox.
+  Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
+}
