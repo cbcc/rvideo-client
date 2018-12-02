@@ -1,0 +1,32 @@
+<mat-card>
+  <mat-card-content>
+    <h1>Rvideo</h1>
+    <h2>登录</h2>
+    <form>
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="邮箱" [formControl]="emailFormControl"
+               [errorStateMatcher]="matcher">
+        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <input matInput type="password" placeholder="密码" [formControl]="passwordFormControl"
+               [errorStateMatcher]="matcher">
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+          password is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <button mat-flat-button color="primary" (click)="login()">登录</button>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <div class="register">
+      <a routerLink="../register">注册</a>
+    </div>
+  </mat-card-actions>
+</mat-card>
