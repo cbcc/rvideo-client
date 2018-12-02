@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import {
-  MatButtonModule, MatCardModule, MatDividerModule, MatGridListModule,
-  MatInputModule, MatListModule, MatMenuModule, MatRadioModule
+  MatButtonModule, MatCardModule, MatDividerModule, MatGridListModule, MatIconModule,
+  MatInputModule, MatListModule, MatMenuModule, MatRadioModule, MatSnackBarModule, MatToolbarModule
 } from '@angular/material';
 
 const CUSTOM_MATERIAL = [
@@ -12,7 +12,10 @@ const CUSTOM_MATERIAL = [
   MatDividerModule,
   MatCardModule,
   MatInputModule,
-  MatMenuModule
+  MatMenuModule,
+  MatToolbarModule,
+  MatIconModule,
+  MatSnackBarModule
 ];
 
 @NgModule({
