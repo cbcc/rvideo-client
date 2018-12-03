@@ -14,7 +14,7 @@ import { PassportRoutingModule } from './passport-routing.module';
   declarations: [
     LoginComponent,
     PassportComponent,
-    RegisterComponent
+    RegisterComponent,
   ],
   imports: [
     CommonModule,

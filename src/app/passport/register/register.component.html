@@ -1,0 +1,58 @@
+<mat-card>
+  <mat-card-content>
+    <h1>Rvideo</h1>
+    <h2>注册</h2>
+    <form [formGroup]="registerForm">
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="邮箱" formControlName="email">
+        <mat-error
+          *ngIf="registerForm.get('email').hasError('email') && !registerForm.get('email').hasError('required')">
+          请输入有效的邮箱地址
+        </mat-error>
+        <mat-error *ngIf="registerForm.get('email').hasError('required')">
+          邮箱地址不能为<strong>空</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="用户名" formControlName="username">
+        <mat-error *ngIf="registerForm.get('username').hasError('required')">
+          请输入用户名
+        </mat-error>
+        <!--errorCode: maxlength 的 l 为小写！-->
+        <mat-error *ngIf="registerForm.get('username').hasError('maxlength')">
+          必须为 <strong>1-20</strong> 字符
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <input matInput type="password" placeholder="密码" formControlName="password">
+        <mat-error *ngIf="registerForm.get('password').hasError('required')">
+          请输入密码
+        </mat-error>
+        <mat-error *ngIf="(registerForm.get('password').hasError('minlength') || registerForm.get('password').hasError('maxlength'))
+         && !registerForm.get('password').hasError('required')">
+          必须为 <strong>6-20</strong> 字符
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <input matInput type="password" placeholder="确认密码" formControlName="confirmPassword">
+        <mat-error *ngIf="registerForm.get('confirmPassword').hasError('required')">
+          请再次输入密码
+        </mat-error>
+        <mat-error
+          *ngIf="registerForm.get('confirmPassword').hasError('passwordValidator') && !registerForm.get('confirmPassword').hasError('required')">
+          两次输入的密码不一致
+        </mat-error>
+      </mat-form-field>
+
+      <button mat-flat-button color="primary" (click)="register()">注册</button>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <div class="login">
+      <a routerLink="../login">登录</a>
+    </div>
+  </mat-card-actions>
+</mat-card>
