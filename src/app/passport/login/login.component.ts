@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { User } from '../../core/data/user';
 import { MessageService } from '../../core/service/message.service';
 import { UserService } from '../../core/service/user.service';
 import { Router } from '@angular/router';
 import { AuthResponse } from '../shared/data/AuthResponse';
-import { LoginService } from '../shared/service/login.service';
+import { PassportService } from '../shared/service/passport.service';
 import { JwtService } from '../../core/service/jwt.service';
 import { LocalStorageService } from '../../core/service/local-storage.service';
 
@@ -24,7 +23,6 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  user: User;
   emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email,
@@ -34,7 +32,7 @@ export class LoginComponent implements OnInit {
   ]);
   matcher = new MyErrorStateMatcher();
 
-  constructor(private loginService: LoginService, private userService: UserService,
+  constructor(private loginService: PassportService, private userService: UserService,
               private jwtService: JwtService, private messageService: MessageService,
               private router: Router) { }
 
@@ -42,7 +40,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    if (this.emailFormControl.errors || this.passwordFormControl.errors) {
+    if (this.emailFormControl.invalid || this.passwordFormControl.invalid) {
       return;
     }
     this.loginService.login(this.emailFormControl.value, this.passwordFormControl.value)
@@ -51,12 +49,11 @@ export class LoginComponent implements OnInit {
         console.log(data);
         if (data.status > 0) {
           const id = this.jwtService.getTokenId(LocalStorageService.getToken());
-          this.userService.getDetail(id).subscribe();
+          this.userService.getDetail(id).subscribe(() => window.location.reload());
           // Get the redirect URL from our auth service
           // If no redirect has been set, use the default
           const redirect = this.loginService.redirectUrl ? this.loginService.redirectUrl : '/';
-          this.router.navigate([redirect]);
-          window.location.reload();
+          return this.router.navigate([redirect]);
         }
       });
   }

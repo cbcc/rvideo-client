@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
+import { DataResponse } from '../../../core/data/dataResponse';
+import { User } from '../../../core/data/user';
 import { LocalStorageService } from '../../../core/service/local-storage.service';
 import { AuthResponse } from '../data/AuthResponse';
 import { UserService } from '../../../core/service/user.service';
@@ -9,9 +11,10 @@ import { UserService } from '../../../core/service/user.service';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class PassportService {
   redirectUrl: string;
   LOGIN_URL = 'http://localhost:8080/api/user/login';
+  REGISTER_URL = 'http://localhost:8080/api/user/register';
 
   constructor(private userService: UserService, private http: HttpClient) { }
 
@@ -24,5 +27,9 @@ export class LoginService {
           }
         }),
       );
+  }
+
+  register(user: User): Observable<DataResponse<null>> {
+    return this.http.post<DataResponse<null>>(this.REGISTER_URL, user);
   }
 }
