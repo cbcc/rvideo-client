@@ -1,29 +1,55 @@
-<h2 class="margin">个人信息</h2>
-<mat-divider></mat-divider>
+<mat-card>
+  <mat-card-content>
+    <h2>个人信息</h2>
+    <mat-divider></mat-divider>
+    <form [formGroup]="settingForm">
+      <div class="row">
+        <div class="title">昵称:</div>
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="昵称" formControlName="username">
+          <mat-error *ngIf="settingForm.get('username').hasError('required')">
+            昵称不能为空
+          </mat-error>
+          <!--errorCode: maxlength 的 l 为小写！-->
+          <mat-error *ngIf="settingForm.get('username').hasError('maxlength')">
+            必须为 <strong>1-20</strong> 字符
+          </mat-error>
+        </mat-form-field>
+      </div>
 
-<div class="nickname">
-  <label class="margin">昵称:</label>
-  <input class="margin" placeholder="昵称" [(ngModel)]="user.name">
-</div>
-<div class="nickname">
-  <label class="margin">邮箱:</label>
-  <input class="margin" disabled="disabled" placeholder="昵称" [(ngModel)]="user.email">
-</div>
-<div>
-  <label class="margin">签名:</label>
-  <!--<textarea class="margin" placeholder="设置您的签名- ( ゜- ゜)つロ"></textarea>-->
-  <textarea class="margin" placeholder="设置您的签名- ( ゜- ゜)つロ" [(ngModel)]="user.sign"
-            rows="3" autocomplete="off"></textarea>
-</div>
+      <div class="row">
+        <div class="title">邮箱:</div>
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="邮箱" formControlName="email">
+        </mat-form-field>
+      </div>
 
-<label class="margin">性别:</label>
-<mat-radio-group [(ngModel)]="user.sex">
-  <mat-radio-button class="margin" value="1">
-    男
-  </mat-radio-button>
-  <mat-radio-button class="margin" value="0">
-    女
-  </mat-radio-button>
-</mat-radio-group>
-<mat-divider></mat-divider>
-<button class="margin" mat-flat-button color="primary" (click)="update()">保存</button>
+      <div class="row">
+        <div class="title">性别:</div>
+        <mat-radio-group formControlName="sex">
+          <mat-radio-button class="margin" value="1">
+            男
+          </mat-radio-button>
+          <mat-radio-button class="margin" value="0">
+            女
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <div class="row">
+        <div class="title">个性签名:</div>
+        <mat-form-field appearance="outline">
+          <textarea matInput placeholder="个性签名" formControlName="sign"></textarea>
+          <mat-error *ngIf="settingForm.get('sign').hasError('maxlength')">
+            必须少于 <strong>100</strong> 字符
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <button mat-flat-button color="primary" *ngIf="userService.isLoginIn()" (click)="update()">保存</button>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+
+  </mat-card-actions>
+</mat-card>
+

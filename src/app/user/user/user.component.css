@@ -1,1 +1,10 @@
+div.layout {
+  background-color: #eceff1;
+}
 
+div.content {
+  display: inline-block;
+  position: relative;
+  top: -40px;
+  width: 59%;
+}

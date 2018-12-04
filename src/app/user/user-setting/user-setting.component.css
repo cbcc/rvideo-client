@@ -1,20 +1,40 @@
-div{
-  display: block;
-  font-family: MicrosoftYaHei, sans-serif;
+mat-card {
+  width: 100%;
+  min-width: 300px;
+  padding: 20px 30px;
 }
-input{
-  font-size: 16px;
+
+h1, h2 {
+  margin-bottom: 15px;
 }
-textarea{
-  width: 400px;
-  font-size: 16px;
+
+input {
+  width: 100%;
 }
-button{
-  display: flex;
+
+mat-radio-button {
+  padding-right: 30px;
 }
-.margin {
-  margin: 10px;
+
+textarea {
+  height: 60px;
 }
-.nickname{
-  display: block;
+
+mat-form-field {
+  width: 80%;
+}
+
+button {
+  height: 44px;
+  margin-top: 2px;
+}
+
+.row {
+  padding: 10px 0;
+}
+
+.title {
+  display: inline-block;
+  width: 80px;
+  padding-right: 10px;
 }

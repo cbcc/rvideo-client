@@ -1,27 +1,22 @@
-<ul class="crises">
-  <li>
-    <a routerLink="/">
-      <span class="badge">1</span>主页
-    </a>
-  </li>
-  <li>
-    <a [routerLink]="">
-      <span class="badge">2</span>投稿
-    </a>
-  </li>
-  <li>
-    <a [routerLink]="">
-      <span class="badge">3</span>关注
-    </a>
-  </li>
-  <li>
-    <a [routerLink]="">
-      <span class="badge">3</span>收藏夹
-    </a>
-  </li>
-  <li>
-    <a routerLink="setting">
-      <span class="badge">3</span>个人信息
-    </a>
-  </li>
-</ul>
+<div class="sidebar">
+  <button mat-button routerLink=".">
+    <mat-icon svgIcon="home"></mat-icon>
+    主页
+  </button>
+  <button mat-button routerLink="./upload">
+    <mat-icon svgIcon="unarchive"></mat-icon>
+    投稿
+  </button>
+  <button mat-button routerLink=".">
+    <mat-icon svgIcon="favorite"></mat-icon>
+    关注
+  </button>
+  <button mat-button routerLink="./favorite">
+    <mat-icon svgIcon="bookmarks"></mat-icon>
+    收藏夹
+  </button>
+  <button mat-button routerLink="./setting">
+    <mat-icon svgIcon="account-box"></mat-icon>
+    个人信息
+  </button>
+</div>

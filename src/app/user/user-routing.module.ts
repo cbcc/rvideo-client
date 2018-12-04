@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {UserComponent} from './user/user.component';
-import {UserSettingComponent} from './user-setting/user-setting.component';
+import { UserComponent } from './user/user.component';
+import { UserSettingComponent } from './user-setting/user-setting.component';
 
 const routes: Routes = [
   {
@@ -20,4 +20,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class UserRoutingModule { }
+export class UserRoutingModule {
+}

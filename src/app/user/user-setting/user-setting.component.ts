@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from '../../core/data/user';
-import {UserService} from '../../core/service/user.service';
-import {DataResponse} from '../../core/data/dataResponse';
-import {LocalStorageService} from '../../core/service/local-storage.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { DataResponse } from '../../core/data/dataResponse';
+import { User } from '../../core/data/user';
+import { LocalStorageService } from '../../core/service/local-storage.service';
+import { MessageService } from '../../core/service/message.service';
+import { UserService } from '../../core/service/user.service';
 
 @Component({
   selector: 'app-user-setting',
@@ -11,19 +13,51 @@ import {LocalStorageService} from '../../core/service/local-storage.service';
 })
 export class UserSettingComponent implements OnInit {
   user: User;
-  constructor(private userService: UserService) {
+  settingForm = new FormGroup({
+    username: new FormControl('', [
+      Validators.required,
+      Validators.maxLength(20)
+    ]),
+    sex: new FormControl('', [
+      Validators.required,
+    ]),
+    email: new FormControl({ value: '', disabled: true }, [
+      Validators.required,
+      Validators.email,
+    ]),
+    sign: new FormControl('', [
+      Validators.maxLength(100)
+    ]),
+  });
+
+  constructor(private userService: UserService, private messageService: MessageService) {
   }
 
   ngOnInit() {
     this.user = LocalStorageService.getUser() != null ? LocalStorageService.getUser() : new User();
+    if (this.user.sex == null) {
+      this.user.sex = 1;
+    }
+    this.settingForm.get('username').setValue(this.user.name);
+    this.settingForm.get('sex').setValue(this.user.sex.toString());
+    this.settingForm.get('email').setValue(this.user.email);
+    this.settingForm.get('sign').setValue(this.user.sign);
   }
 
   update() {
+    if (this.settingForm.invalid) {
+      return;
+    }
+    this.user.name = this.settingForm.get('username').value;
+    this.user.sex = this.settingForm.get('sex').value;
+    this.user.sign = this.settingForm.get('sign').value;
     this.userService.update(this.user).subscribe((data: DataResponse<null>) => {
-      window.alert(data.message);
+      this.messageService.openSnackBar(data.message);
       if (data.status > 0) {
         this.userService.getDetail(this.user.id).subscribe((data2: DataResponse<User>) => {
-          window.alert(data2.message);
+          if (data2.status > 0) {
+            window.location.reload();
+          }
         });
       }
     });
