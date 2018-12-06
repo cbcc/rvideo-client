@@ -1,12 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {httpInterceptorProviders} from './interceptor';
+import { SharedModule } from '../shared/shared.module';
+import { TopBarComponent } from './component/top-bar/top-bar.component';
+import { UserButtonComponent } from './component/top-bar/user-button/user-button.component';
+import { httpInterceptorProviders } from './interceptor';
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule
+  declarations: [
+    TopBarComponent,
+    UserButtonComponent
   ],
-  providers: [ httpInterceptorProviders ]
+  imports: [
+    CommonModule,
+    SharedModule
+  ],
+  exports: [
+  ],
+  providers: [httpInterceptorProviders]
 })
-export class CoreModule { }
+export class CoreModule {
+}
