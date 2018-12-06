@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../../data/user';
-import { UserService } from '../../../service/user.service';
-import { LocalStorageService } from '../../../service/local-storage.service';
+import { User } from '../../data/user';
+import { UserService } from '../../service/user.service';
+import { LocalStorageService } from '../../service/local-storage.service';
 
 @Component({
   selector: 'app-user-button',
