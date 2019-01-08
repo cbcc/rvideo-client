@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-sidebar.component.css']
 })
 export class UserSidebarComponent implements OnInit {
+  selectedLink: string;
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  setSelectedLink(link: string) {
+    this.selectedLink = link;
+  }
 }

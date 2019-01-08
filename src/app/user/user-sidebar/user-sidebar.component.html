@@ -1,22 +1,25 @@
-<div class="sidebar">
-  <button mat-button routerLink=".">
+<nav>
+  <button mat-button [class.selected]="selectedLink === 'home'" routerLink="." (click)="setSelectedLink('home')">
     <mat-icon svgIcon="home"></mat-icon>
     主页
   </button>
-  <button mat-button routerLink="./upload">
+  <button mat-button [class.selected]="selectedLink === 'upload'" routerLink="./upload"
+          (click)="setSelectedLink('upload')">
     <mat-icon svgIcon="unarchive"></mat-icon>
     投稿
   </button>
-  <button mat-button routerLink=".">
+  <button mat-button [class.selected]="selectedLink === 'follow'" routerLink="." (click)="setSelectedLink('follow')">
     <mat-icon svgIcon="favorite"></mat-icon>
     关注
   </button>
-  <button mat-button routerLink="./favorite">
+  <button mat-button [class.selected]="selectedLink === 'favorite'" routerLink="./favorite"
+          (click)="setSelectedLink('favorite')">
     <mat-icon svgIcon="bookmarks"></mat-icon>
     收藏夹
   </button>
-  <button mat-button routerLink="./setting">
+  <button mat-button [class.selected]="selectedLink === 'setting'" routerLink="./setting"
+          (click)="setSelectedLink('setting')">
     <mat-icon svgIcon="account-box"></mat-icon>
     个人信息
   </button>
-</div>
+</nav>

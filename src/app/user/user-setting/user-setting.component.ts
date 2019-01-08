@@ -48,14 +48,16 @@ export class UserSettingComponent implements OnInit {
     if (this.settingForm.invalid) {
       return;
     }
-    this.user.name = this.settingForm.get('username').value;
-    this.user.sex = this.settingForm.get('sex').value;
-    this.user.sign = this.settingForm.get('sign').value;
-    this.userService.update(this.user).subscribe((data: DataResponse<null>) => {
+    const userParam = new User();
+    userParam.id = this.user.id;
+    userParam.name = this.settingForm.get('username').value;
+    userParam.sex = parseInt(this.settingForm.get('sex').value, 10);
+    userParam.sign = this.settingForm.get('sign').value;
+    this.userService.update(userParam).subscribe((data: DataResponse<null>) => {
       this.messageService.openSnackBar(data.message);
-      if (data.status > 0) {
+      if (data.status === 200) {
         this.userService.getDetail(this.user.id).subscribe((data2: DataResponse<User>) => {
-          if (data2.status > 0) {
+          if (data2.status === 200) {
             window.location.reload();
           }
         });

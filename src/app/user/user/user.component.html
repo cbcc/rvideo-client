@@ -1,7 +1,13 @@
-<div class="layout">
-  <app-user-header></app-user-header>
-  <app-user-sidebar></app-user-sidebar>
-  <div class="content">
-    <router-outlet></router-outlet>
+<div class="user-layout">
+  <div class="user-header">
+    <app-user-header></app-user-header>
+  </div>
+  <div class="user-content">
+    <div class="user-sidebar">
+      <app-user-sidebar></app-user-sidebar>
+    </div>
+    <div class="user-board">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>
