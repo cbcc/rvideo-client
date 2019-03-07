@@ -1,0 +1,46 @@
+div.home-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+div.home-header {
+  flex: 1 0 auto;
+  width: 100%;
+}
+
+div.home-content {
+  display: flex;
+  flex: 0 1 auto;
+  width: 100%;
+  min-height: 550px;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 20px 0;
+}
+
+@media (min-width: 1282px) {
+  div.home-layout {
+    width: 1280px;
+  }
+}
+
+div.home-sidebar {
+  flex: 1 1 auto;
+  width: 80px;
+}
+
+div.home-board {
+  flex: 11 1 auto;
+  width: 880px;
+  margin: 0 10px;
+}
+
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+

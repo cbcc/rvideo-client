@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VideoCardComponent } from './video-card.component';
+import { HomeHeaderComponent } from './home-header.component';
 
-describe('VideoCardComponent', () => {
-  let component: VideoCardComponent;
-  let fixture: ComponentFixture<VideoCardComponent>;
+describe('HomeHeaderComponent', () => {
+  let component: HomeHeaderComponent;
+  let fixture: ComponentFixture<HomeHeaderComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ VideoCardComponent ]
+      declarations: [HomeHeaderComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(VideoCardComponent);
+    fixture = TestBed.createComponent(HomeHeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
