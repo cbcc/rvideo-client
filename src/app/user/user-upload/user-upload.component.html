@@ -1,0 +1,68 @@
+<mat-card>
+  <mat-card-content>
+    <h2>投稿</h2>
+    <mat-divider></mat-divider>
+    <div class="container">
+      <div class="file-list-container">
+        <h3>文件上传</h3>
+        <div *ngIf="showProgress">
+          <p>名称: {{name}}</p>
+          <p>大小: {{size}}B</p>
+          <mat-progress-bar mode="determinate" [value]="value"></mat-progress-bar>
+          <p>{{message}}</p>
+        </div>
+
+        <button mat-flat-button color="primary" (click)="videoPicked.click()">添加视频</button>
+
+        <form hidden enctype="multipart/form-data" method="post">
+          <input type="file" #videoPicked
+                 (click)="name=''"
+                 (change)="onPicked(videoPicked)">
+        </form>
+      </div>
+
+      <div class="normal-container">
+        <h3>基本信息</h3>
+        <div class="title">视频封面（格式jpeg、png，建议尺寸≥1146*717）</div>
+        <button class="video_face" mat-button (click)="facePickup.click()">上传封面
+          <img class="face" *ngIf="face_url !== undefined" [src]="face_url">
+        </button>
+        <input #facePickup type="file" hidden (change)="onFacePickup(facePickup)">
+      </div>
+
+      <form [formGroup]="submitForm">
+        <div class="title">标签</div>
+        <mat-form-field class="tag" appearance="outline">
+          <mat-select placeholder="" formControlName="tag">
+            <mat-option *ngFor="let tag of tags" [value]="tag.key">
+              {{tag.value}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <div class="title">标题</div>
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="标题" formControlName="name">
+          <mat-error *ngIf="submitForm.get('name').hasError('required')">
+            标题不能为空
+          </mat-error>
+          <mat-error *ngIf="submitForm.get('name').hasError('maxlength')">
+            必须为 <strong>1-80</strong> 字符
+          </mat-error>
+        </mat-form-field>
+
+        <div class="title">简介</div>
+        <mat-form-field appearance="outline">
+          <textarea matInput placeholder="填写更全面的相关信息（1-250字符）" formControlName="introduction"></textarea>
+          <mat-error *ngIf="submitForm.get('introduction').hasError('required')">
+            简介不能为空
+          </mat-error>
+          <mat-error *ngIf="submitForm.get('introduction').hasError('maxlength')">
+            必须为 <strong>1-250</strong> 字符
+          </mat-error>
+        </mat-form-field>
+        <button mat-flat-button color="primary" *ngIf="userService.isLoginIn()" (click)="submit()">立即投稿</button>
+      </form>
+    </div>
+  </mat-card-content>
+</mat-card>

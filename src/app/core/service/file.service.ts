@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { DataResponse } from '../data/dataResponse';
-import { Video } from '../data/video';
 import { UploadProgress } from './uploadProgress';
 
 @Injectable({
@@ -28,13 +27,13 @@ export class FileService {
     return this.http.put<DataResponse<null>>(url, formData);
   }
 
-  uploadVideoFace(file: File): Observable<DataResponse<Video>> {
+  uploadVideoFace(file: File): Observable<DataResponse<string>> {
     if (!file) {
       return;
     }
     const formData = new FormData();
     formData.append('file', file);
-    return this.http.post<DataResponse<Video>>(this.VIDEO_FACE_UPLOAD_URL, formData);
+    return this.http.post<DataResponse<string>>(this.VIDEO_FACE_UPLOAD_URL, formData);
   }
 
   uploadVideo(file: File): Observable<UploadProgress> {
@@ -51,7 +50,7 @@ export class FileService {
     );
   }
 
-  private getEventMessage(event: HttpEvent<any> | HttpResponse<DataResponse<Video>>, file: File): UploadProgress {
+  private getEventMessage(event: HttpEvent<any> | HttpResponse<DataResponse<string>>, file: File): UploadProgress {
     const uploadProgress: UploadProgress = new UploadProgress();
     switch (event.type) {
       case HttpEventType.Sent:
@@ -59,14 +58,13 @@ export class FileService {
         uploadProgress.message = `正在上传 "${ file.name }" 大小： ${ file.size }.`;
         break;
       case HttpEventType.UploadProgress:
-        // const percentDone = Math.round(100 * event.loaded / event.total);
         uploadProgress.value = Math.round(100 * event.loaded / event.total);
         uploadProgress.message = `${ uploadProgress.value }%`;
         break;
       case HttpEventType.Response:
         uploadProgress.value = 100;
         uploadProgress.message = `"${ file.name }"上传成功！`;
-        uploadProgress.path = event.body.data.file;
+        uploadProgress.path = event.body.data;
         break;
       default:
         uploadProgress.message = `"${ file.name }" surprising upload event: ${ event.type }.`;

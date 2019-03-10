@@ -1,0 +1,6 @@
+mat-card {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 300px;
+  padding: 20px 30px;
+}

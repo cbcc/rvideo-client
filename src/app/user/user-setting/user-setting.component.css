@@ -5,10 +5,6 @@ mat-card {
   padding: 20px 30px;
 }
 
-h1, h2 {
-  margin-bottom: 15px;
-}
-
 input {
   width: 100%;
 }
@@ -27,7 +23,6 @@ mat-form-field {
 
 button {
   height: 44px;
-  margin-top: 2px;
 }
 
 .row {
