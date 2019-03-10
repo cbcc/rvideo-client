@@ -1,16 +1,21 @@
-mat-card{
-}
-img{
-  max-height: 200px;
-}
-.example-card {
-  max-width: 200px;
+div.video-content {
+  display: flex;
+  flex-wrap: wrap;
+  width: 960px;
 }
 
-.example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-  background-size: cover;
+:host {
+  width: 100%;
 }
-.mat-card-content{
 
+app-video-title {
+  width: 960px;
+}
+
+app-video-player {
+  width: 640px;
+}
+
+app-video-side {
+  width: 320px;
 }

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {VideoComponent} from './video/video.component';
-import {VideoCardComponent} from './video-card/video-card.component';
+import { VideoContentComponent } from './video-content/video-content.component';
+import { VideoComponent } from './video/video.component';
 
 const routes: Routes = [
   {
@@ -9,8 +9,8 @@ const routes: Routes = [
     component: VideoComponent,
     children: [
       {
-        path: 'movie',
-        component: VideoCardComponent
+        path: ':id',
+        component: VideoContentComponent
       }
     ]
   }
@@ -20,4 +20,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class VideoRoutingModule { }
+export class VideoRoutingModule {
+}

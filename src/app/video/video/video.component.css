@@ -1,2 +1,19 @@
+div.video-layout {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  min-height: 640px;
+}
 
+div.video-content {
+  display: flex;
+  flex: 0 1 auto;
+  width: 960px;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 20px 0;
+}
 
+:host {
+  width: 100%;
+}

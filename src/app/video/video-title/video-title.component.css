@@ -1,0 +1,8 @@
+div.video-title {
+  width: 100%;
+  height: 120px;
+}
+
+:host {
+  width: 100%;
+}

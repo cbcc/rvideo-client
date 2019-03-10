@@ -1,0 +1,5 @@
+<div *ngIf="video">
+  <video [src]="fileService.RESOURCE_URL + '/' + video.file" controls="controls">
+    你的浏览器不支持播放此视频
+  </video>
+</div>
