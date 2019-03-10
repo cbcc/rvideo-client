@@ -12,14 +12,14 @@ import { FooterComponent } from './layout/footer/footer.component';
     LayoutComponent,
     HeaderComponent,
     UserButtonComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     CommonModule,
     SharedModule
   ],
   exports: [
-    LayoutComponent
+    LayoutComponent,
   ],
   providers: [httpInterceptorProviders]
 })

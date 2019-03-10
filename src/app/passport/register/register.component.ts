@@ -21,13 +21,13 @@ export function passwordValidator(control: FormGroup): ValidatorFn {
 })
 export class RegisterComponent implements OnInit {
   registerForm = new FormGroup({
-    email: new FormControl('', [
-      Validators.required,
-      Validators.email
-    ]),
     username: new FormControl('', [
       Validators.required,
       Validators.maxLength(20)
+    ]),
+    email: new FormControl('', [
+      Validators.required,
+      Validators.email
     ]),
     password: new FormControl('', [
       Validators.required,
@@ -56,7 +56,7 @@ export class RegisterComponent implements OnInit {
     user.password = this.registerForm.get('password').value;
     this.passportService.register(user).subscribe((data: DataResponse<null>) => {
       this.messageService.openSnackBar(data.message);
-      if (data.status > 0) {
+      if (data.status === 200) {
         return this.router.navigate(['/passport/login']);
       }
     });

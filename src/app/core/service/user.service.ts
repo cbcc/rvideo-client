@@ -1,22 +1,17 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
-import {User} from '../data/user';
-import {DataResponse} from '../data/dataResponse';
-import {Observable, throwError} from 'rxjs';
-import {catchError, tap} from 'rxjs/operators';
-import {LocalStorageService} from './local-storage.service';
-
-const headers = new HttpHeaders({
-  'Content-Type': 'application/json',
-  'Authorization': ''
-});
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable, throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
+import { DataResponse } from '../data/dataResponse';
+import { User } from '../data/user';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  getDetailUrl = 'http://localhost:8080/api/user';
-  updateUrl = 'http://localhost:8080/api/user';
+  RESOURCE_URL = 'http://localhost:8080/rvideo/resource';
+  USER_URL = 'http://localhost:8080/api/user';
 
   constructor(private http: HttpClient) {
   }
@@ -27,19 +22,20 @@ export class UserService {
   }
 
   update(user: User): Observable<DataResponse<null>> {
-    const url = `${this.updateUrl}/${user.id}`;
-    return this.http.put<DataResponse<null>>(url, user, { headers }).pipe(
-      // catchError(this.handleError)
-    );
+    const url = `${ this.USER_URL }/${ user.id }`;
+    return this.http.put<DataResponse<null>>(url, user);
   }
 
   getDetail(id: number): Observable<DataResponse<User>> {
-    const url = `${this.getDetailUrl}/${id}`;
-    return this.http.get<DataResponse<User>>(url, { headers })
+    const url = `${ this.USER_URL }/${ id }`;
+    return this.http.get<DataResponse<User>>(url)
       .pipe(
         tap((data: DataResponse<User>) => {
           console.log('getDetail: ' + data.data.name);
-          if (data.status > 0) {
+          if (data.status === 200) {
+            if (data.data.face != null) {
+              data.data.face = this.RESOURCE_URL + '/' + data.data.face;
+            }
             LocalStorageService.setUser(data.data);
           }
         }),
@@ -58,9 +54,9 @@ export class UserService {
     } else {
       // The backend returned an unsuccessful response status.
       // The response body may contain clues as to what went wrong,
-      console.error(`Backend returned code: ${error.status}`);
-      console.error(`body status: ${error.error.status}`);
-      console.error(`body message: ${error.error.message}`);
+      console.error(`Backend returned code: ${ error.status }`);
+      console.error(`body status: ${ error.error.status }`);
+      console.error(`body message: ${ error.error.message }`);
     }
     // return an observable with a user-facing error message
     return throwError(

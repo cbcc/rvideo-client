@@ -9,7 +9,7 @@ import { PassportService } from '../shared/service/passport.service';
 import { JwtService } from '../../core/service/jwt.service';
 import { LocalStorageService } from '../../core/service/local-storage.service';
 
-/** Error when invalid control is dirty, touched, or submitted. */
+/** Error when invalid control is dirty or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const isSubmitted = form && form.submitted;
@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
       .subscribe((data: AuthResponse) => {
         this.messageService.openSnackBar(data.message);
         console.log(data);
-        if (data.status > 0) {
+        if (data.status === 200) {
           const id = this.jwtService.getTokenId(LocalStorageService.getToken());
           this.userService.getDetail(id).subscribe(() => window.location.reload());
           // Get the redirect URL from our auth service

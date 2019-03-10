@@ -22,7 +22,7 @@ export class PassportService {
     return this.http.post<AuthResponse>(this.LOGIN_URL, { email: email, password: password })
       .pipe(
         tap((data: AuthResponse) => {
-          if (data.status > 0) {
+          if (data.status === 200) {
             LocalStorageService.setToken(data.token);
           }
         }),

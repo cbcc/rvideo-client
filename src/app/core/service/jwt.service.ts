@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
-import {JwtHelperService} from '@auth0/angular-jwt';
-import {UserToken} from '../data/userToken';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { UserToken } from '../data/userToken';
 
 @Injectable({
   providedIn: 'root'
 })
 export class JwtService {
   jwtHelperService = new JwtHelperService();
-  constructor() { }
+
+  constructor() {
+  }
 
   getTokenId(token: string): number {
     return this.parseToken(token).id;

@@ -27,5 +27,13 @@ export const TAGS: Tag[] = [
   {
     key: 'music',
     value: '音乐'
+  },
+  {
+    key: 'fashion',
+    value: '时尚'
+  },
+  {
+    key: 'ad',
+    value: '广告'
   }
 ];

@@ -6,4 +6,8 @@ export class User {
   face: string;
   sex: number;
   sign: string;
+
+  constructor(face?: string) {
+    this.face = face;
+  }
 }
