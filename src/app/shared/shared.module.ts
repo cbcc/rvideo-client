@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { VideoCardComponent } from './component/video-card/video-card.component';
 import { CustomMaterialModule } from './custom-material/custom-material.module';
 
 const SHARED_MODULE = [
@@ -12,13 +13,21 @@ const SHARED_MODULE = [
   CustomMaterialModule
 ];
 
+const COMPONENT = [
+  VideoCardComponent
+];
+
 @NgModule({
-  declarations: [],
-  imports: [
-    SHARED_MODULE
+  declarations: [
+    COMPONENT
   ],
-  exports:  [
-    SHARED_MODULE
+  imports: [
+    SHARED_MODULE,
+  ],
+  exports: [
+    SHARED_MODULE,
+    COMPONENT
   ]
 })
-export class SharedModule { }
+export class SharedModule {
+}

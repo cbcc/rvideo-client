@@ -1,0 +1,8 @@
+<mat-card>
+  <button mat-button class="play" routerLink="/video/{{video.id}}">
+    <img mat-card-image [src]="fileService.RESOURCE_URL + '/' + video.face" [alt]='video.name'>
+  </button>
+  <mat-card-content>
+    <p>{{video.name}}</p>
+  </mat-card-content>
+</mat-card>
