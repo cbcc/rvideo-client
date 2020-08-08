@@ -1,5 +1,27 @@
-<div *ngIf="video">
-  <video [src]="fileService.RESOURCE_URL + '/' + video.file" controls="controls">
-    你的浏览器不支持播放此视频
-  </video>
-</div>
+<mat-card>
+  <mat-card-content>
+    <div class="video-container" *ngIf="video">
+      <video [src]="fileService.RESOURCE_URL + '/' + video.file" controls="controls">
+        你的浏览器不支持播放此视频
+      </video>
+    </div>
+    <div class="action">
+      <form>
+        <div class="row">
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="在这里输入评论..." [formControl]="barrageForm">
+            <mat-error *ngIf="barrageForm.hasError('maxlength')">
+              必须为 <strong>1-50</strong> 字符
+            </mat-error>
+          </mat-form-field>
+          <button class="barrage-btn" mat-flat-button color="primary" (click)="comment()">评论</button>
+        </div>
+      </form>
+      <div class="btn-container">
+        <button mat-flat-button color="accent" (click)="like()">点赞</button>
+        <button mat-flat-button color="warn" (click)="action()">{{collectBtnText}}</button>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+<app-video-side [barrages]="barrages"></app-video-side>

@@ -1,0 +1,47 @@
+mat-card {
+  box-sizing: border-box;
+  width: 640px;
+  min-height: 360px;
+  padding: 0 0 10px 0;
+  border-bottom-right-radius: 0;
+}
+
+button {
+  width: 74px;
+}
+
+div.video-container {
+  width: 640px;
+  height: 360px;
+}
+video {
+  width: 640px;
+  height: 360px;
+}
+
+div.action {
+  padding: 0 10px;
+}
+
+div.row {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+}
+
+div.btn-container {
+  display: flex;
+  justify-content: space-between;
+  width: 30%;
+  padding: 0 5px;
+}
+
+mat-form-field {
+  flex: 1 1 auto;
+  margin: 0 5px;
+}
+
+button.barrage-btn {
+  margin-top: 2px;
+  height: 44px;
+}

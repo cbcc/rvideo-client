@@ -11,7 +11,9 @@ mat-icon {
 }
 
 button {
+  box-sizing: border-box;
   background-color: #eee;
+  width: 136px;
   padding: 20px 40px;
   margin: 10px;
   border-radius: 3px;

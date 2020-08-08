@@ -1,13 +1,25 @@
-<div class="user-layout">
-  <div class="user-header">
-    <app-user-header></app-user-header>
+<div class="layout-main">
+  <div class="header-main">
+    <app-header></app-header>
   </div>
-  <div class="user-content">
-    <div class="user-sidebar">
-      <app-user-sidebar></app-user-sidebar>
+  <div class="content-main">
+    <!--user-->
+    <div class="user-layout">
+      <div class="user-header">
+        <app-user-header></app-user-header>
+      </div>
+      <div class="user-content">
+        <div class="user-sidebar">
+          <app-user-sidebar></app-user-sidebar>
+        </div>
+        <div class="user-board">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
     </div>
-    <div class="user-board">
-      <router-outlet></router-outlet>
-    </div>
+
+  </div>
+  <div class="footer-main">
+    <app-footer></app-footer>
   </div>
 </div>

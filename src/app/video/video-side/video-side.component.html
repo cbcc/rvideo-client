@@ -1,3 +1,14 @@
-<div>
-  video-side works!
-</div>
+<mat-card>
+  <mat-card-content>
+    <h2>评论区</h2>
+    <mat-divider></mat-divider>
+    <div class="barrage">
+      <div class="barrage-th-content">内容</div>
+      <div class="barrage-th-date">发送时间</div>
+      <ng-container *ngFor="let barrage of barrages">
+        <div class="barrage-item-content" [title]="barrage.content">{{barrage.content}}</div>
+        <div class="barrage-item-date" [title]="barrage.date | date:'hh:mm:ss MM-dd-YY'">{{barrage.date | date:"hh:mm:ss MM-dd"}}</div>
+      </ng-container>
+    </div>
+  </mat-card-content>
+</mat-card>

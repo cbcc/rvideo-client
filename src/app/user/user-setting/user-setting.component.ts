@@ -30,7 +30,7 @@ export class UserSettingComponent implements OnInit {
     ]),
   });
 
-  constructor(private userService: UserService, private messageService: MessageService) {
+  constructor(public userService: UserService, private messageService: MessageService) {
   }
 
   ngOnInit() {
@@ -56,7 +56,7 @@ export class UserSettingComponent implements OnInit {
     this.userService.update(userParam).subscribe((data: DataResponse<null>) => {
       this.messageService.openSnackBar(data.message);
       if (data.status === 200) {
-        this.userService.getDetail(this.user.id).subscribe((data2: DataResponse<User>) => {
+        this.userService.getDetail(this.user.id, 'USER').subscribe((data2: DataResponse<User>) => {
           if (data2.status === 200) {
             window.location.reload();
           }

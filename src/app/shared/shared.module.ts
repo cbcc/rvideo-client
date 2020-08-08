@@ -6,8 +6,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
+import { UserButtonComponent } from './component/user-button/user-button.component';
 import { VideoCardComponent } from './component/video-card/video-card.component';
 import { CustomMaterialModule } from './custom-material/custom-material.module';
+import { FooterComponent } from './layout/footer/footer.component';
+import { HeaderComponent } from './layout/header/header.component';
+import { LayoutComponent } from './layout/layout/layout.component';
+import { ContentPipe } from './pipe/content.pipe';
 
 const SHARED_MODULE = [
   CommonModule,
@@ -22,19 +27,29 @@ const SHARED_MODULE = [
 ];
 
 const COMPONENT = [
-  VideoCardComponent
+  UserButtonComponent,
+  VideoCardComponent,
+  HeaderComponent,
+  FooterComponent,
+  LayoutComponent
+];
+
+const PIPE = [
+  ContentPipe
 ];
 
 @NgModule({
   declarations: [
-    COMPONENT
+    COMPONENT,
+    PIPE
   ],
   imports: [
     SHARED_MODULE,
   ],
   exports: [
     SHARED_MODULE,
-    COMPONENT
+    COMPONENT,
+    PIPE
   ]
 })
 export class SharedModule {

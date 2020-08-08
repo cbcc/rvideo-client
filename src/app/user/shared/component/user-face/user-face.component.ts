@@ -33,7 +33,7 @@ export class UserFaceComponent implements OnInit {
   uploadFace(file: File) {
     this.fileService.uploadFace(this.user.id, file).subscribe((data: DataResponse<null>) => {
       this.messageService.openSnackBar(data.message);
-      this.userService.getDetail(this.user.id).subscribe((data2: DataResponse<User>) => {
+      this.userService.getDetail(this.user.id, 'USER').subscribe((data2: DataResponse<User>) => {
         if (data2.status === 200) {
           window.location.reload();
         }

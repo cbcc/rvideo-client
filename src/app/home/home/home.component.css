@@ -42,10 +42,26 @@ mat-divider {
   margin-top: 8px;
 }
 
-:host {
+div.layout-main {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+div.header-main {
   width: 100%;
+  height: 50px;
+}
+
+div.content-main {
+  display: flex;
+  justify-content: center;
+  flex: 1 1 auto;
+  width: 100%;
+}
+
+div.footer-main {
+  width: 100%;
+  height: 40px;
 }
 

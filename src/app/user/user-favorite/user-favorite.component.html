@@ -2,5 +2,8 @@
   <mat-card-content>
     <h2>收藏夹</h2>
     <mat-divider></mat-divider>
+    <div class="video-container">
+      <app-video-card *ngFor="let video of videos" [video]="video"></app-video-card>
+    </div>
   </mat-card-content>
 </mat-card>

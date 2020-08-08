@@ -4,6 +4,7 @@ import {
   MatInputModule, MatListModule, MatMenuModule, MatProgressBarModule, MatRadioModule, MatSelectModule,
   MatSnackBarModule, MatToolbarModule
 } from '@angular/material';
+import { MatTableModule } from '@angular/material/table';
 
 const CUSTOM_MATERIAL = [
   MatGridListModule,
@@ -18,7 +19,8 @@ const CUSTOM_MATERIAL = [
   MatIconModule,
   MatSnackBarModule,
   MatProgressBarModule,
-  MatSelectModule
+  MatSelectModule,
+  MatTableModule
 ];
 
 @NgModule({

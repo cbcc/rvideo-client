@@ -9,13 +9,18 @@ div.video-content {
 }
 
 app-video-title {
+  box-sizing: border-box;
   width: 960px;
+  margin-bottom: 12px;
 }
 
 app-video-player {
-  width: 640px;
+  display: flex;
+  width: 960px;
 }
 
-app-video-side {
-  width: 320px;
+app-video-bottom {
+  box-sizing: border-box;
+  width: 960px;
+  margin-top: 20px;
 }

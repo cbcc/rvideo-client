@@ -1,5 +1,9 @@
-<div class="video-title">
-  <h1>{{video.name}}</h1>
-  <div>{{video.tag}}  {{video.date | date:"yy-MM-dd hh:mm:ss"}}</div>
-  <div>播放量：{{video.views}}   点赞：{{video.likes}}</div>
-</div>
+<mat-card>
+  <mat-card-content>
+    <div class="video-title">
+      <h1>{{video.name}}</h1>
+      <div>{{video.tag}}  {{video.date | date:"yy-MM-dd hh:mm:ss"}}</div>
+      <div>播放量：{{video.views}}   点赞：{{video.likes}}</div>
+    </div>
+  </mat-card-content>
+</mat-card>

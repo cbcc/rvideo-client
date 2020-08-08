@@ -6,12 +6,12 @@
   <button mat-button [class.selected]="selectedLink === 'upload'" routerLink="./upload"
           (click)="setSelectedLink('upload')">
     <mat-icon svgIcon="unarchive"></mat-icon>
-    投稿
+    上传
   </button>
-  <button mat-button [class.selected]="selectedLink === 'follow'" routerLink="." (click)="setSelectedLink('follow')">
+<!--  <button mat-button [class.selected]="selectedLink === 'follow'" routerLink="." (click)="setSelectedLink('follow')">
     <mat-icon svgIcon="favorite"></mat-icon>
     关注
-  </button>
+  </button>-->
   <button mat-button [class.selected]="selectedLink === 'favorite'" routerLink="./favorite"
           (click)="setSelectedLink('favorite')">
     <mat-icon svgIcon="bookmarks"></mat-icon>

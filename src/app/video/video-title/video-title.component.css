@@ -1,5 +1,9 @@
+mat-card {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
 div.video-title {
-  width: 100%;
   height: 120px;
 }
 

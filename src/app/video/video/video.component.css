@@ -3,6 +3,7 @@ div.video-layout {
   flex-wrap: wrap;
   justify-content: center;
   min-height: 640px;
+  background-color: #eceff1;
 }
 
 div.video-content {
@@ -16,4 +17,27 @@ div.video-content {
 
 :host {
   width: 100%;
+}
+
+div.layout-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+div.header-main {
+  width: 100%;
+  height: 50px;
+}
+
+div.content-main {
+  display: flex;
+  justify-content: center;
+  flex: 1 1 auto;
+  width: 100%;
+}
+
+div.footer-main {
+  width: 100%;
+  height: 40px;
 }

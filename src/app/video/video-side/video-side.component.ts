@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Barrage } from '../../core/data/barrage';
 
 @Component({
   selector: 'app-video-side',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./video-side.component.css']
 })
 export class VideoSideComponent implements OnInit {
+  @Input() barrages: Barrage[];
 
   constructor() { }
 

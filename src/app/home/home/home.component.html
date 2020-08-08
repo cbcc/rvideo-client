@@ -1,14 +1,26 @@
-<div class="home-layout">
-  <div class="home-header">
-    <app-home-header></app-home-header>
+<div class="layout-main">
+  <div class="header-main">
+    <app-header></app-header>
   </div>
-  <mat-divider></mat-divider>
-  <div class="home-content">
-    <div class="home-sidebar">
-      <app-home-sidebar></app-home-sidebar>
+  <div class="content-main">
+    <!--home-->
+    <div class="home-layout">
+      <div class="home-header">
+        <app-home-header></app-home-header>
+      </div>
+      <mat-divider></mat-divider>
+      <div class="home-content">
+        <div class="home-sidebar">
+          <app-home-sidebar></app-home-sidebar>
+        </div>
+        <div class="home-board">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
     </div>
-    <div class="home-board">
-      <router-outlet></router-outlet>
-    </div>
+
+  </div>
+  <div class="footer-main">
+    <app-footer></app-footer>
   </div>
 </div>

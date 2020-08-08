@@ -46,14 +46,19 @@ export class LoginComponent implements OnInit {
     this.loginService.login(this.emailFormControl.value, this.passwordFormControl.value)
       .subscribe((data: AuthResponse) => {
         this.messageService.openSnackBar(data.message);
-        console.log(data);
         if (data.status === 200) {
+          const roles = this.jwtService.getTokenRoles(LocalStorageService.getToken());
           const id = this.jwtService.getTokenId(LocalStorageService.getToken());
-          this.userService.getDetail(id).subscribe(() => window.location.reload());
-          // Get the redirect URL from our auth service
-          // If no redirect has been set, use the default
-          const redirect = this.loginService.redirectUrl ? this.loginService.redirectUrl : '/';
-          return this.router.navigate([redirect]);
+          if (roles.includes('ADMIN')) {
+            this.userService.getDetail(id, 'ADMIN').subscribe(() => window.location.reload());
+            return this.router.navigate(['/admin']);
+          } else {
+            this.userService.getDetail(id, 'USER').subscribe(() => window.location.reload());
+            // Get the redirect URL from our auth service
+            // If no redirect has been set, use the default
+            const redirect = this.loginService.redirectUrl ? this.loginService.redirectUrl : '/';
+            return this.router.navigate([redirect]);
+          }
         }
       });
   }

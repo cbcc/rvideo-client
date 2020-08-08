@@ -9,7 +9,7 @@
       <mat-divider></mat-divider>
     </div>
     <button class="menu-button" *ngIf="!userService.isLoginIn()" mat-button color="primary"
-            routerLink="./passport/login">登录
+            routerLink="/passport/login">登录
     </button>
     <button class="menu-button" *ngIf="userService.isLoginIn()" mat-button color="warn" (click)="logout()">注销</button>
   </div>
