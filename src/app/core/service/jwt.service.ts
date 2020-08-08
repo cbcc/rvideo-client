@@ -15,6 +15,10 @@ export class JwtService {
     return this.parseToken(token).id;
   }
 
+  getTokenRoles(token: string):  Array<string> {
+    return this.parseToken(token).roles;
+  }
+
   parseToken(token: string): UserToken {
     return this.jwtHelperService.decodeToken(token);
   }

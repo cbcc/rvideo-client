@@ -8,5 +8,6 @@ export class Video {
   face: string;
   file: string;
   introduction: string;
+  verify: number;
   date: string;
 }

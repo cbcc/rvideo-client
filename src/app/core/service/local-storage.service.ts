@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { User } from '../data/user';
-import { Video } from '../data/video';
 
 @Injectable({
   providedIn: 'root'
@@ -32,5 +31,17 @@ export class LocalStorageService {
 
   static removeUser(): void {
     localStorage.removeItem('user');
+  }
+
+  static getAdmin(): User {
+    return JSON.parse(localStorage.getItem('admin'));
+  }
+
+  static setAdmin(user: User): void {
+    localStorage.setItem('admin', JSON.stringify(user));
+  }
+
+  static removeAdmin(): void {
+    localStorage.removeItem('admin');
   }
 }

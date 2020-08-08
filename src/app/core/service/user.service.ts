@@ -12,6 +12,7 @@ import { LocalStorageService } from './local-storage.service';
 export class UserService {
   RESOURCE_URL = 'http://localhost:8080/rvideo/resource';
   USER_URL = 'http://localhost:8080/api/user';
+  USERS_URL = 'http://localhost:8080/api/users';
 
   constructor(private http: HttpClient) {
   }
@@ -21,30 +22,56 @@ export class UserService {
     LocalStorageService.removeToken();
   }
 
+  adminLogout() {
+    LocalStorageService.removeAdmin();
+    LocalStorageService.removeToken();
+  }
+
   update(user: User): Observable<DataResponse<null>> {
     const url = `${ this.USER_URL }/${ user.id }`;
     return this.http.put<DataResponse<null>>(url, user);
   }
 
-  getDetail(id: number): Observable<DataResponse<User>> {
+  getDetail(id: number, role: string): Observable<DataResponse<User>> {
     const url = `${ this.USER_URL }/${ id }`;
     return this.http.get<DataResponse<User>>(url)
       .pipe(
         tap((data: DataResponse<User>) => {
-          console.log('getDetail: ' + data.data.name);
           if (data.status === 200) {
             if (data.data.face != null) {
               data.data.face = this.RESOURCE_URL + '/' + data.data.face;
             }
-            LocalStorageService.setUser(data.data);
+            if (role === 'USER') {
+              LocalStorageService.setUser(data.data);
+            } else if (role === 'ADMIN') {
+              LocalStorageService.setAdmin(data.data);
+            }
           }
         }),
         catchError(this.handleError)
       );
   }
 
+  getAll(): Observable<DataResponse<User[]>> {
+    return this.http.get<DataResponse<User[]>>(this.USERS_URL);
+  }
+
+  delete(id: number): Observable<DataResponse<null>> {
+    const url = `${ this.USER_URL }/${ id }`;
+    return this.http.delete<DataResponse<null>>(url);
+  }
+
+  findLikeName(name: string): Observable<DataResponse<User[]>> {
+    const url = `${ this.USERS_URL }/name/${ name }`;
+    return this.http.get<DataResponse<User[]>>(url);
+  }
+
   isLoginIn(): boolean {
-    return LocalStorageService.getToken() != null;
+    return LocalStorageService.getUser() != null;
+  }
+
+  isAdminLoginIn(): boolean {
+    return LocalStorageService.getAdmin() != null;
   }
 
   private handleError(error: HttpErrorResponse) {

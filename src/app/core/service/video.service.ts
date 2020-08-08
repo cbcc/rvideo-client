@@ -23,19 +23,49 @@ export class VideoService {
     return this.http.get<DataResponse<Video>>(url);
   }
 
-  find(userId: number, name: string): Observable<DataResponse<Video[]>> {
-    const httpParams = new HttpParams();
-    if (userId != null) {
-      httpParams.set('user-id', userId.toString());
+  getAll(): Observable<DataResponse<Video[]>> {
+    const url = `${ this.VIDEOS_URL }/all`;
+    return this.http.get<DataResponse<Video[]>>(url);
+  }
+
+  delete(id: number): Observable<DataResponse<null>> {
+    const url = `${ this.VIDEO_URL }/${ id }`;
+    return this.http.delete<DataResponse<null>>(url);
+  }
+
+  updateLikes(id: number, likes: number): Observable<DataResponse<null>> {
+    const url = `${ this.VIDEO_URL }/${ id }/likes`;
+    return this.http.put<DataResponse<null>>(url, { likes: likes });
+  }
+
+  updateViews(id: number, views: number): Observable<DataResponse<null>> {
+    const url = `${ this.VIDEO_URL }/${ id }/views`;
+    return this.http.put<DataResponse<null>>(url, { views: views });
+  }
+
+  updateVerify(id: number, verify: number): Observable<DataResponse<null>> {
+    const url = `${ this.VIDEO_URL }/${ id }/verify`;
+    return this.http.put<DataResponse<null>>(url, { verify: verify });
+  }
+
+  find(userId: number, name?: string): Observable<DataResponse<Video[]>> {
+    let httpParams;
+    if (userId !== null) {
+      httpParams = new HttpParams().set('user-id', userId.toString());
     }
-    if (name != null) {
-      httpParams.set('name', name);
+    if (name !== null) {
+      httpParams = new HttpParams().set('name', name);
     }
     return this.http.get<DataResponse<Video[]>>(this.VIDEOS_URL, { params: httpParams });
   }
 
   findByTag(tag: string): Observable<DataResponse<Video[]>> {
-    const url = `${ this.VIDEOS_URL }/${ tag }`;
+    const url = `${ this.VIDEOS_URL }/tag/${ tag }`;
+    return this.http.get<DataResponse<Video[]>>(url);
+  }
+
+  findByVerify(verify: number): Observable<DataResponse<Video[]>> {
+    const url = `${ this.VIDEOS_URL }/verify/${ verify }`;
     return this.http.get<DataResponse<Video[]>>(url);
   }
 }

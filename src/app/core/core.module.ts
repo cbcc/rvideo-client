@@ -18,10 +18,10 @@ import { FooterComponent } from './layout/footer/footer.component';
     CommonModule,
     SharedModule
   ],
-  exports: [
-    LayoutComponent,
-  ],
-  providers: [httpInterceptorProviders]
+  exports: [],
+  providers: [
+    httpInterceptorProviders,
+  ]
 })
 export class CoreModule {
 }
