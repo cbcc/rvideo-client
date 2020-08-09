@@ -10,8 +10,8 @@ import { Video } from '../data/video';
   providedIn: 'root'
 })
 export class FavoriteService {
-  FAVORITE_URL = 'http://localhost:8080/api/favorite';
-  FAVORITES_URL = 'http://localhost:8080/api/favorites';
+  FAVORITE_URL = 'api/favorite';
+  FAVORITES_URL = 'api/favorites';
 
   constructor(private http: HttpClient) { }
 

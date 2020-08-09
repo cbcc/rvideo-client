@@ -8,8 +8,8 @@ import { DataResponse } from '../data/dataResponse';
   providedIn: 'root'
 })
 export class BarrageService {
-  BARRAGE_URL = 'http://localhost:8080/api/barrage';
-  BARRAGES_URL = 'http://localhost:8080/api/barrages';
+  BARRAGE_URL = 'api/barrage';
+  BARRAGES_URL = 'api/barrages';
 
   constructor(private http: HttpClient) { }
 

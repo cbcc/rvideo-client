@@ -9,10 +9,10 @@ import { UploadProgress } from './uploadProgress';
   providedIn: 'root'
 })
 export class FileService {
-  RESOURCE_URL = 'http://localhost:8080/rvideo/resource';
-  UPDATE_FACE_URL = 'http://localhost:8080/api/user';
-  VIDEO_FILE_UPLOAD_URL = 'http://localhost:8080/api/video/file/upload';
-  VIDEO_FACE_UPLOAD_URL = 'http://localhost:8080/api/video/face/upload';
+  RESOURCE_URL = 'resource';
+  UPDATE_FACE_URL = 'api/user';
+  VIDEO_FILE_UPLOAD_URL = 'api/video/file/upload';
+  VIDEO_FACE_UPLOAD_URL = 'api/video/face/upload';
 
   constructor(private http: HttpClient) {
   }

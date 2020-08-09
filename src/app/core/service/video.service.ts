@@ -8,9 +8,9 @@ import { Video } from '../data/video';
   providedIn: 'root'
 })
 export class VideoService {
-  VIDEO_SUBMIT_URL = 'http://localhost:8080/api/video/submit';
-  VIDEO_URL = 'http://localhost:8080/api/video';
-  VIDEOS_URL = 'http://localhost:8080/api/videos';
+  VIDEO_SUBMIT_URL = 'api/video/submit';
+  VIDEO_URL = 'api/video';
+  VIDEOS_URL = 'api/videos';
 
   constructor(private http: HttpClient) { }
 

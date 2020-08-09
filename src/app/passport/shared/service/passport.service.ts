@@ -13,8 +13,8 @@ import { UserService } from '../../../core/service/user.service';
 })
 export class PassportService {
   redirectUrl: string;
-  LOGIN_URL = 'http://localhost:8080/api/user/login';
-  REGISTER_URL = 'http://localhost:8080/api/user/register';
+  LOGIN_URL = 'api/user/login';
+  REGISTER_URL = 'api/user/register';
 
   constructor(private userService: UserService, private http: HttpClient) { }
 

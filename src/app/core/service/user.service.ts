@@ -10,9 +10,9 @@ import { LocalStorageService } from './local-storage.service';
   providedIn: 'root'
 })
 export class UserService {
-  RESOURCE_URL = 'http://localhost:8080/rvideo/resource';
-  USER_URL = 'http://localhost:8080/api/user';
-  USERS_URL = 'http://localhost:8080/api/users';
+  RESOURCE_URL = 'resource';
+  USER_URL = 'api/user';
+  USERS_URL = 'api/users';
 
   constructor(private http: HttpClient) {
   }
