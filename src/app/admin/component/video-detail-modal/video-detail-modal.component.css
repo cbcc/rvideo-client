@@ -1,0 +1,26 @@
+button {
+  margin: 0 5px;
+}
+
+video {
+  width: 300px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+textarea {
+  height: 80px;
+}
+
+div.field-container {
+  display: flex;
+}
+
+div.title {
+  width: 60px;
+  padding: 10px 10px;
+  text-align: right;
+  font-weight: bolder;
+}

@@ -1,0 +1,22 @@
+div.search {
+  display: flex;
+  margin: 10px 0;
+}
+
+div.label {
+  flex: 0 0 auto;
+  line-height: 32px;
+}
+
+input.search-input {
+  width: 200px;
+}
+
+button {
+  margin: 0 5px;
+}
+
+img {
+  width: 60px;
+  height: 50px;
+}

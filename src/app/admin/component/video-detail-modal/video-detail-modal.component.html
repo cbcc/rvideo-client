@@ -1,0 +1,35 @@
+<nz-modal [(nzVisible)]="isVisible" nzTitle="详情" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+  <form [formGroup]="videoForm">
+    <div class="field-container">
+      <div class="title">标题</div>
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="" formControlName="name">
+      </mat-form-field>
+    </div>
+
+    <div class="field-container">
+      <div class="title">标签</div>
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="" formControlName="tag">
+      </mat-form-field>
+    </div>
+
+    <div class="field-container">
+      <div class="title">时间</div>
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="" formControlName="date">
+      </mat-form-field>
+    </div>
+
+    <video *ngIf="video != null" [src]="fileService.RESOURCE_URL + '/' + video.file" controls="controls">
+      你的浏览器不支持播放此视频
+    </video>
+
+    <div class="field-container">
+      <div class="title">简介</div>
+      <mat-form-field appearance="outline">
+        <textarea matInput placeholder="" formControlName="introduction"></textarea>
+      </mat-form-field>
+    </div>
+  </form>
+</nz-modal>

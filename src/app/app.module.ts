@@ -11,6 +11,7 @@ import { UserModule } from './user/user.module';
 import { PassportModule } from './passport/passport.module';
 import { CoreModule } from './core/core.module';
 import { VideoModule } from './video/video.module';
+import { AdminModule } from './admin/admin.module';
 
 registerLocaleData(zh);
 
@@ -23,6 +24,7 @@ registerLocaleData(zh);
     SharedModule,
     CoreModule,
     PassportModule,
+    AdminModule,
     HomeModule,
     UserModule,
     VideoModule,

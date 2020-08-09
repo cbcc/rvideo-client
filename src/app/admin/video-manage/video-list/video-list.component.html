@@ -1,0 +1,53 @@
+<nz-breadcrumb style="margin:16px 0;">
+  <nz-breadcrumb-item>视频管理</nz-breadcrumb-item>
+  <nz-breadcrumb-item>列表</nz-breadcrumb-item>
+</nz-breadcrumb>
+<nz-content style="background:#fff; padding: 24px; min-height: 580px;">
+  <div class="search">
+    <button nz-button nzType="default" (click)="getAll()">显示所有</button>
+    <div class="label">关键字：</div>
+    <input class="search-input" nz-input [(ngModel)]="key"/>
+    <button nz-button nzType="primary" (click)="findLikeName(key)">搜索</button>
+  </div>
+
+  <nz-table #basicTable [nzData]="videoSet">
+    <thead>
+    <tr>
+      <th style="width: 70px">状态</th>
+      <th style="width: 60px">ID</th>
+      <th style="width: 160px">标题</th>
+      <th style="width: 60px">封面</th>
+      <th style="width: 60px">标签</th>
+      <th style="width: 160px">简介</th>
+      <th style="width: 160px">视频</th>
+      <th style="width: 140px">时间</th>
+      <th style="width: 120px">操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td>
+        <ng-container *ngIf="data.verify === 0">未审核</ng-container>
+        <ng-container *ngIf="data.verify === 1">通过</ng-container>
+      </td>
+      <td>{{data.id}}</td>
+      <td>{{data.name | content: 20}}</td>
+      <td>
+        <img [src]="fileService.RESOURCE_URL + '/' + data.face" [alt]='data.name'>
+      </td>
+      <td>{{data.tag}}</td>
+      <td>{{data.introduction | content: 20}}</td>
+      <td>{{data.file | content: 20}}</td>
+      <td>{{data.date | date: "yy-MM-dd hh:mm"}}</td>
+      <td>
+        <a (click)="showDetail(data)">详情</a>
+        <nz-divider nzType="vertical"></nz-divider>
+        <a (click)="delete(data)">删除</a>
+      </td>
+    </tr>
+    </tbody>
+  </nz-table>
+
+</nz-content>
+
+<app-video-detail-modal></app-video-detail-modal>

@@ -1,0 +1,25 @@
+<nz-layout class="layout">
+  <nz-header>
+    <div class="logo">Rvideo</div>
+    <ul nz-menu [nzTheme]="'dark'" [nzMode]="'horizontal'" style="line-height: 64px;">
+      <a *ngIf="!userService.isAdminLoginIn()" class="login" routerLink="/passport/login">登录</a>
+      <a *ngIf="userService.isAdminLoginIn()" class="login" (click)="userService.adminLogout()">注销</a>
+    </ul>
+  </nz-header>
+  <nz-layout>
+    <nz-sider [nzWidth]="200" style="background:#fff">
+      <ul nz-menu [nzMode]="'inline'" style="height:100%">
+        <li nz-menu-item routerLink="./user"><i nz-icon [nzType]="'user'"></i>用户管理</li>
+        <li nz-submenu nzIcon="laptop" nzTitle="视频管理">
+          <ul>
+            <li nz-menu-item routerLink="./video/verify">视频审核</li>
+            <li nz-menu-item routerLink="./video/list">视频列表</li>
+          </ul>
+        </li>
+      </ul>
+    </nz-sider>
+    <nz-layout style="min-height: 640px; padding:0 24px 24px">
+      <router-outlet></router-outlet>
+    </nz-layout>
+  </nz-layout>
+</nz-layout>

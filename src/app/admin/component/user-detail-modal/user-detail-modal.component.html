@@ -1,0 +1,36 @@
+<nz-modal [(nzVisible)]="isVisible" nzTitle="详情" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+  <form [formGroup]="userForm">
+    <div class="field-container">
+      <div class="title">名字</div>
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="" formControlName="name">
+      </mat-form-field>
+    </div>
+
+    <div class="field-container">
+      <div class="title">性别</div>
+      <mat-radio-group formControlName="sex">
+        <mat-radio-button value="1">
+          男
+        </mat-radio-button>
+        <mat-radio-button value="0">
+          女
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <div class="field-container">
+      <div class="title">邮箱</div>
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="" formControlName="email">
+      </mat-form-field>
+    </div>
+
+    <div class="field-container">
+      <div class="title">个性签名</div>
+      <mat-form-field appearance="outline">
+        <textarea matInput placeholder="" formControlName="sign"></textarea>
+      </mat-form-field>
+    </div>
+  </form>
+</nz-modal>
