@@ -10,7 +10,7 @@ import { FileService } from '../../../core/service/file.service';
 export class VideoCardComponent implements OnInit {
   @Input() video: Video;
 
-  constructor(private fileService: FileService) { }
+  constructor(public fileService: FileService) { }
 
   ngOnInit() {
   }

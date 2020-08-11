@@ -39,7 +39,7 @@ export class UserUploadComponent implements OnInit {
     ]),
   });
 
-  constructor(private userService: UserService, private fileService: FileService, private videoService: VideoService,
+  constructor(public userService: UserService, private fileService: FileService, private videoService: VideoService,
               private messageService: MessageService) {
     this.video = new Video();
   }
